@@ -1,3 +1,54 @@
-body{
-    background-color: blue;
+*{
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body {
+    background-color: antiquewhite;
+}
+
+.item{
+    font-weight: 800;
+}
+
+.firstCrystalImage {
+    height: 30px;
+    width: 30px;
+}
+
+.titleText{
+    text-align: center;
+    font-size: 50px;
+    color: blue;
+    background-color: darkseagreen;
+}
+
+.rulesBox {
+    display: table;
+    background-color: darkseagreen;
+    letter-spacing: 3px;
+    color: blue;
+    width: 450px;
+    height: 90px;
+}
+
+.targetNumber {
+    width: 200px;
+    height: 30px;
+    background-color: darkseagreen;
+    color: blue;
+    padding: 10px;
+}
+
+.crystalBox {
+    width: 100px;
+    height: 100px;
+    padding: 3px;
+    margin: 3px;
+}
+
+.counter {
+    width: 150px;
+    height: 50px;
+    background-color: darkseagreen;
+    color: blue;
 }
