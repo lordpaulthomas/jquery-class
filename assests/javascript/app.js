@@ -18,6 +18,15 @@ function getRandomArbitrary(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
+// this function resets the game after each win or loss
+function resetGame() {
+    winsLosses$.html(`Wins: ${wins} <br/><br/><br/>Losses: ${losses}`)
+    counter = 0;
+    counterDiv$.html(`Your current total is :<br/><br/>  ${counter}`)
+    targetNumber$ = getRandomArbitrary(50, 150)
+    target$.text(`Number to hit is : ${targetNumber$}`)
+}
+
 // generate and display the target number
 targetNumber$ = getRandomArbitrary(50, 150)
 var target$ = $("<div>")
@@ -43,7 +52,6 @@ $(".crystalGame").append(winsLosses$)
 
 
 // crystals section
-
 crystalOne$ = $("<img>")
 crystalOne$.addClass('crystalBox')
 crystalOne$.attr("src", "./assests/images/first_crystal.jpg")
@@ -77,23 +85,14 @@ $(".crystalBox").on("click", function () {
     counterDiv$.html(`Your current total is :<br/><br/>  ${counter}`)
     $(".crystalGame").append(counterDiv$)
     if (counter === targetNumber$) {
-        wins++
-        winsLosses$.html(`Wins: ${wins} <br/><br/><br/>Losses: ${losses}`) 
-        counter = 0;
-        counterDiv$.html(`Your current total is :<br/><br/>  ${counter}`)
-        targetNumber$ = getRandomArbitrary(50, 150)
-        target$.text(`Number to hit is : ${targetNumber$}`)
-        alert('You Win')
-     
+        wins++;
+        resetGame();
+        alert('You Win');
     }
     else if (counter > targetNumber$) {
-        losses++
-        winsLosses$.html(`Wins: ${wins} <br/><br/><br/>Losses: ${losses}`)
-        counter = 0;
-        counterDiv$.html(`Your current total is :<br/><br/>  ${counter}`)
-        targetNumber$ = getRandomArbitrary(50, 150)
-        target$.text(`Number to hit is : ${targetNumber$}`)
-        alert("You Lose")
+        losses++;
+        resetGame();
+        alert("You Lose");
     }
 })
 
