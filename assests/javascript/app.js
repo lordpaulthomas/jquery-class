@@ -1,7 +1,7 @@
 
 // game title
 var gameTitle$ = $("<h1>")
-gameTitle$.text("Crystal Game")
+gameTitle$.text("Crystal Collector!")
 gameTitle$.addClass("titleText")
 $(".crystalGame").append(gameTitle$)
 
@@ -13,7 +13,7 @@ $(".crystalGame").append(gameRules$)
 
 
 
-// generate random number
+// function to generate random number
 function getRandomArbitrary(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
@@ -24,6 +24,23 @@ var target$ = $("<div>")
 target$.addClass('targetNumber')
 target$.text(`Number to hit is : ${targetNumber$}`)
 $(".crystalGame").append(target$)
+
+// this counter tracks the user's score
+var counter = 0;
+
+
+// this is the <div> that displays the user's total
+counterDiv$ = $("<div>")
+counterDiv$.addClass("counter")
+
+// wins and losses section
+var wins = 0;
+var losses = 0;
+winsLosses$ = $("<div>")
+winsLosses$.addClass("wins-losses")
+winsLosses$.html(`Wins: ${wins} <br/><br/><br/>Losses: ${losses}`)
+$(".crystalGame").append(winsLosses$)
+
 
 // crystals section
 
@@ -51,28 +68,31 @@ crystalFour$.attr("src", "./assests/images/fourth_crystal.jpg")
 crystalFour$.attr("data-crystalvalue", getRandomArbitrary(21, 26))
 $(".crystalGame").append(crystalFour$)
 
-// use this counter to track the user's score
-var counter = 0;
-
-// this is the <div> that displays the user's total
-counterDiv$ = $("<div>")
-counterDiv$.addClass("counter")
-
 // this is the main game play loop
 
 $(".crystalBox").on("click", function () {
-
-
     var crystalValue = ($(this).attr("data-crystalvalue"));
     crystalValue = parseInt(crystalValue);
     counter += crystalValue;
-    counterDiv$.text(`Your current total is :  ${counter}`)
+    counterDiv$.html(`Your current total is :<br/><br/>  ${counter}`)
     $(".crystalGame").append(counterDiv$)
-
     if (counter === targetNumber$) {
-        alert('You win')
+        wins++
+        winsLosses$.html(`Wins: ${wins} <br/><br/><br/>Losses: ${losses}`) 
+        counter = 0;
+        counterDiv$.html(`Your current total is :<br/><br/>  ${counter}`)
+        targetNumber$ = getRandomArbitrary(50, 150)
+        target$.text(`Number to hit is : ${targetNumber$}`)
+        alert('You Win')
+     
     }
     else if (counter > targetNumber$) {
+        losses++
+        winsLosses$.html(`Wins: ${wins} <br/><br/><br/>Losses: ${losses}`)
+        counter = 0;
+        counterDiv$.html(`Your current total is :<br/><br/>  ${counter}`)
+        targetNumber$ = getRandomArbitrary(50, 150)
+        target$.text(`Number to hit is : ${targetNumber$}`)
         alert("You Lose")
     }
 })
