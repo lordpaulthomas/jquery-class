@@ -8,9 +8,7 @@ body {
     background-size: cover;
 }
 
-.item{
-    font-weight: 800;
-}
+
 
 .firstCrystalImage {
     height: 30px;
@@ -25,9 +23,11 @@ body {
 
 .rulesBox {
     display: table;
+    position: relative;
     background-color: papayawhip;
     letter-spacing: 3px;
     color: green;
+    padding: 20px;
     width: 450px;
     height: 90px;
 }
@@ -43,6 +43,7 @@ body {
 
 .wins-losses {
     position: relative;
+    padding: 10px;
     left: 160px;
     bottom: 130px;
     width: 150px;

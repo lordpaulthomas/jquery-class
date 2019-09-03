@@ -11,8 +11,6 @@ gameRules$.html("You will be given a random number at the start of the game. <br
 gameRules$.addClass("rulesBox")
 $(".crystalGame").append(gameRules$)
 
-
-
 // function to generate random number
 function getRandomArbitrary(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -22,13 +20,22 @@ function getRandomArbitrary(min, max) {
 function resetGame() {
     winsLosses$.html(`Wins: ${wins} <br/><br/><br/>Losses: ${losses}`)
     counter = 0;
+    crystalOne$.attr("data-crystalvalue", getRandomArbitrary(2, 3))
+    $(".crystalGame").append(crystalOne$)
+    crystalTwo$.attr("data-crystalvalue", getRandomArbitrary(4, 6))
+    $(".crystalGame").append(crystalTwo$)
+    crystalThree$.attr("data-crystalvalue", getRandomArbitrary(7, 9))
+    $(".crystalGame").append(crystalThree$)
+    crystalFour$.attr("data-crystalvalue", getRandomArbitrary(10, 12))
+    $(".crystalGame").append(crystalFour$)
     counterDiv$.html(`Your current total is :<br/><br/>  ${counter}`)
-    targetNumber$ = getRandomArbitrary(50, 150)
+    targetNumber$ = getRandomArbitrary(19, 120)
     target$.text(`Number to hit is : ${targetNumber$}`)
+    
 }
 
 // generate and display the target number
-targetNumber$ = getRandomArbitrary(50, 150)
+targetNumber$ = getRandomArbitrary(19, 120)
 var target$ = $("<div>")
 target$.addClass('targetNumber')
 target$.text(`Number to hit is : ${targetNumber$}`)
@@ -55,32 +62,34 @@ $(".crystalGame").append(winsLosses$)
 crystalOne$ = $("<img>")
 crystalOne$.addClass('crystalBox')
 crystalOne$.attr("src", "./assests/images/first_crystal.jpg")
-crystalOne$.attr("data-crystalvalue", getRandomArbitrary(3, 8))
+crystalOne$.attr("data-crystalvalue", getRandomArbitrary(2, 3))
 $(".crystalGame").append(crystalOne$)
 
 crystalTwo$ = $("<img>")
 crystalTwo$.addClass('crystalBox')
 crystalTwo$.attr("src", "./assests/images/second_crystal.jpeg")
-crystalTwo$.attr("data-crystalvalue", getRandomArbitrary(9, 14))
+crystalTwo$.attr("data-crystalvalue", getRandomArbitrary(4, 6))
 $(".crystalGame").append(crystalTwo$)
 
 crystalThree$ = $("<img>")
 crystalThree$.addClass('crystalBox')
 crystalThree$.attr("src", "./assests/images/third_crystal.jpg")
-crystalThree$.attr("data-crystalvalue", getRandomArbitrary(15, 20))
+crystalThree$.attr("data-crystalvalue", getRandomArbitrary(7, 9))
 $(".crystalGame").append(crystalThree$)
 
 crystalFour$ = $("<img>")
 crystalFour$.addClass('crystalBox')
 crystalFour$.attr("src", "./assests/images/fourth_crystal.jpg")
-crystalFour$.attr("data-crystalvalue", getRandomArbitrary(21, 26))
+crystalFour$.attr("data-crystalvalue", getRandomArbitrary(10, 12))
 $(".crystalGame").append(crystalFour$)
 
 // this is the main game play loop
 
 $(".crystalBox").on("click", function () {
+
     var crystalValue = ($(this).attr("data-crystalvalue"));
     crystalValue = parseInt(crystalValue);
+    console.log(crystalValue)
     counter += crystalValue;
     counterDiv$.html(`Your current total is :<br/><br/>  ${counter}`)
     $(".crystalGame").append(counterDiv$)
