@@ -76,3 +76,65 @@ body {
     font-size: 40px;
 }
 
+@media screen and (max-width: 640px) {
+
+.titleText {
+    position: relative;
+    left: 6.5vw;
+    width: 70vw;
+    height: 5vh;
+    font-size: 20px;
+
+}
+
+.rulesBox {
+    position: relative;
+    left: 5vh;
+    width: 70vw;
+    height: 30vh;
+    font-size: 12px
+}
+
+.targetNumber {
+    position: relative;
+    left: 6.5vw;
+    margin-right: 150px;
+    width: 105px;
+    height: 91px;
+    padding: 5px;
+}
+
+.wins-losses {
+    position: relative;
+    padding: 5px;
+    left: 25vh;
+    bottom: 90px;
+    width: 1;
+    height: 90px;
+    background-color: darkcyan;
+    color: aliceblue;
+
+}
+
+.crystalBox {
+    left: 5.4vw;
+    bottom: 12vh;
+    width: 100px;
+    height: 100px;
+    padding: 3px;
+    margin: 3px;
+    
+}
+
+.counter {
+    text-align: center;
+    left: 6.5vw;
+    bottom: 80px;
+    font-size: 15px;
+    width: 250px;
+    height: 80px;
+    background-color: darkseagreen;
+    color: blue;
+}
+
+}   
